@@ -1,19 +1,10 @@
 
 from packeg import *
-from feels import *
+from feelsModel import *
+
 
 
 counter = 0
-
-
-# חישוב תכונות
-features = extract_feature('D:\\Users\\שרי\\Desktop\\FullProjectSARI\\20240415-173029.wav', mfcc=True, chroma=True, mel=True)
-# חיזוי רגש
-predicted_emotion = model.predict(features)
-# פירוש התוצאה
-emotion_label = predicted_emotion[0]
-print(f"Predicted emotion: {emotion_label}")
-
 
 
     # פונקציה לקליטת שמע והצגתו
@@ -39,7 +30,7 @@ def listen_and_print(person,i,choice):
               else:
                 print("אמת")
                 pyautogui.press('q')
-                break
+                return audio
 
 
             elif choice==2:

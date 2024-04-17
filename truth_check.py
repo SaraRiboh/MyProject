@@ -3,6 +3,7 @@ from packeg import *
 from fun_camera import *
 
 
+
 #בדיקה על 3 שאלות האמת
 
 
@@ -24,7 +25,6 @@ def fun_truth_check(choice):
         print("עכשיו תפתח מצלמה ועל הנבחן לענות תשובה")
 
         # יצירת תהליך נפרד עבור קליטת שמע
-
         thread = threading.Thread(target = listen_and_print, args=(person, i, choice))
         thread.start()
         # הפעלת פונקציית המצלמה
@@ -33,7 +33,16 @@ def fun_truth_check(choice):
         show_camera()
 
         # המתנה לסיום תהליך קליטת השמע
-        thread.join()
+        audio1=thread.join()
+
+        # חישוב תכונות
+        features = extract_feature(audio1, mfcc=True, chroma=True, mel=True)
+        # חיזוי רגש
+        predicted_emotion = model.predict(features)
+        # פירוש התוצאה
+        emotion_label = predicted_emotion[0]
+        print(f"Predicted emotion: {emotion_label}")
+
 
 
 

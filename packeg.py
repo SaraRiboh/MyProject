@@ -31,7 +31,6 @@ from transformers import Wav2Vec2Model
 from transformers import Wav2Vec2ForSequenceClassification
 import soundfile as sf
 
-
 import gradio as gr
 import whisper
 from transformers import pipeline
