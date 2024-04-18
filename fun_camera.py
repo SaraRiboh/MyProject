@@ -8,7 +8,8 @@ counter = 0
 
 
     # פונקציה לקליטת שמע והצגתו
-def listen_and_print(person,i,choice):
+def listen_and_print(person,i,choice,audio_queue):
+
 
     # יצירת מזהה דיבור
     recognizer = sr.Recognizer()
@@ -30,7 +31,8 @@ def listen_and_print(person,i,choice):
               else:
                 print("אמת")
                 pyautogui.press('q')
-                return audio
+                audio_queue.put(audio)
+                break
 
 
             elif choice==2:
@@ -40,7 +42,12 @@ def listen_and_print(person,i,choice):
                 else:
                     print("נהדר")
                     pyautogui.press('q')
+                    audio_queue.put(audio)
                     break
+            elif choice == 4:
+                pyautogui.press('q')
+                audio_queue.put(audio)
+                break
 
         except sr.UnknownValueError:
             print("לא זיהיתי את מה שאמרת")
@@ -55,6 +62,7 @@ def listen_and_print(person,i,choice):
 def show_camera():
     # יצירת אובייקט לכידת וידאו
     cap = cv2.VideoCapture(0)
+
     # לולאה אינסופית עד לחיצה על q
     while True:
         # קריאת פריים

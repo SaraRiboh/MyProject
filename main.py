@@ -2,6 +2,7 @@
 
 from truth_check import *
 from  lie_check import  *
+from real_test import *
 
 def main():
     while True:
@@ -24,11 +25,11 @@ def main():
         if choice == 1:
             fun_truth_check(choice)
         if choice == 2:
-             fun_lie_check(choice)
-        # if choice == 3:
+            fun_lie_check(choice)
+        #  if choice == 3:
         #     show()
-        # if choice == 4:
-        #     start()
+        if choice == 4:
+            fun_real_test(choice)
         if choice == 5:
             exit()
 
