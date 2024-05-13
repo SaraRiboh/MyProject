@@ -1,17 +1,14 @@
 
 
 from truth_check import *
-from  lie_check import  *
-from real_test import *
+
 
 def main():
     while True:
         print("תפריט פעולות")
-        print("הקש 1 כדי לעבור למבחן הסטטיסטיקה של 3 שאלות האמת")
-        print("הקש 2 כדי לעבור למבחן של 3 שאלות השקר")
-        print("הקש 3 להציג את הסטטיסטיקות ")
-        print("הקש 4 לתחילת הבחינה")
-        print("הקש 5 לצאת מהתפריט")
+        print("הקש 1 להתחלת הבחינה")
+        print("הקש 2 להסבר על האפליקציה")
+        print("הקש 3 ליציאה")
 
 
         try:  # במקרה והמשתמש הזין קלט לא חוקי כמו רווח
@@ -24,13 +21,7 @@ def main():
             print('Please select a valid choice')
         if choice == 1:
             fun_truth_check(choice)
-        if choice == 2:
-            fun_lie_check(choice)
-        #  if choice == 3:
-        #     show()
-        if choice == 4:
-            fun_real_test(choice)
-        if choice == 5:
+        if choice == 3:
             exit()
 
 

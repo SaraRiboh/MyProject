@@ -8,7 +8,7 @@ counter = 0
 
 
     # פונקציה לקליטת שמע והצגתו
-def listen_and_print(person,i,choice,audio_queue):
+def listen_and_print(sentence,choice,audio_queue):
 
 
     # יצירת מזהה דיבור
@@ -25,7 +25,7 @@ def listen_and_print(person,i,choice,audio_queue):
             text = recognizer.recognize_google(audio)
             print(f"אמרת: {text}")
             if choice==1:
-              if not text == person[i]:
+              if not text == sentence:
                 print("תגיד את האמת בבקשה!")
                 user_response = text  # תשובת המשתמש הנכונה תכנס לתוך הקלט הזה
               else:
@@ -36,7 +36,7 @@ def listen_and_print(person,i,choice,audio_queue):
 
 
             elif choice==2:
-                if  text == person[i]:
+                if  text == sentence:
                     print("תגיד שקר בבקשה!")
                     user_response = text  # תשובת המשתמש הנכונה תכנס לתוך הקלט הזה
                 else:
@@ -44,7 +44,7 @@ def listen_and_print(person,i,choice,audio_queue):
                     pyautogui.press('q')
                     audio_queue.put(audio)
                     break
-            elif choice == 4:
+            elif choice == 3:
                 pyautogui.press('q')
                 audio_queue.put(audio)
                 break

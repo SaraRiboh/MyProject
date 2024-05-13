@@ -3,14 +3,16 @@
 from packeg import *
 from feelsModel import *
 from fun_camera import *
-
+from truth_check import *
+from lie_check import *
 
 #הבחינה האמיתית
-def fun_real_test(choice):
-     Blood_Pressure = random.randint(160, 179)
-     Pulse_Pressure = random.randint(190, 200)
-     person = ["David", "Levy", "Jerusalem"]
-     i=1
+
+sentence = "My Name Is Sara"
+def fun_real_test(choice,Blood_Pressure2, Pulse_Pressure2,emotion_label):
+     Blood_Pressure3 = random.randint(140, 179)
+     Pulse_Pressure3 = random.randint(170, 200)
+
 
      question = input("בוחן יקר אנא הכנס שאלה לשאול את הנבחן,אם אינך חפץ לשאול הקש A")
 
@@ -26,7 +28,7 @@ def fun_real_test(choice):
 
        # יצירת תהליך נפרד עבור קליטת שמע
        audio_queue = queue.Queue()
-       thread = threading.Thread(target = listen_and_print, args=(person, i,choice, audio_queue))
+       thread = threading.Thread(target = listen_and_print, args=(sentence,choice, audio_queue))
        thread.start()
        # הפעלת פונקציית המצלמה
        #num = show_camera()# שחוזר מספר נגיעות מהYOLO
@@ -51,7 +53,15 @@ def fun_real_test(choice):
        # חיזוי רגש
        predicted_emotion = model.predict(features)
        # פירוש התוצאה
-       emotion_label = predicted_emotion[0]
-       print(f"Predicted emotion: {emotion_label}")
+       emotion_label2 = predicted_emotion[0]
+       percent=0
+       if(emotion_label2==emotion_label):
+          percent+=30
+       if(Blood_Pressure3>159):
+           percent+=5
+       if(Pulse_Pressure3>179):
+           percent += 5
+       str_p = str(percent)
+       print("הנבחן שיקר בוודאות של "+str_p+"%")
        question = input("בוחן יקר אנא הכנס שאלה לשאול את הנבחן,אם אינך חפץ לשאול הקש A")
 
