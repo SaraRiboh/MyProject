@@ -1,5 +1,5 @@
 
-
+from explane import *
 from truth_check import *
 
 
@@ -17,10 +17,12 @@ def main():
             print("Invalid input. Please enter an integer.")
             continue  # ask for input again
 
-        if choice > 4 or choice < 1:
+        if choice > 3 or choice < 1:
             print('Please select a valid choice')
         if choice == 1:
             fun_truth_check(choice)
+        if choice == 2:
+            fun_explane()
         if choice == 3:
             exit()
 

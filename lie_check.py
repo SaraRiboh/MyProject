@@ -6,12 +6,10 @@ from fun_camera import *
 
 
 
-#בדיקה על שאלת השקר
 
-
-
+#בדיקה על שאלת השקרq
 sentence = "my name is Sarah"
-
+numLie=0
 def fun_lie_check(choice1):
 
     Blood_Pressure2 = random.randint(160, 179)
@@ -21,19 +19,16 @@ def fun_lie_check(choice1):
 
     engine = pyttsx3.init()
 
-    question = input("בוחן יקר אנא הכנס שאלה לשאול את הנבחן")
 
-    engine.say(question)
-    engine.runAndWait()
 
-    print("עכשיו תפתח מצלמה ועל הנבחן לענות תשובה")
+    print("עכשיו תפתח מצלמה ועל הנבחן לענות שקר על השאלה")
 
     # יצירת תהליך נפרד עבור קליטת שמע
     audio_queue = queue.Queue()
     thread = threading.Thread(target = listen_and_print, args=(sentence,choice1, audio_queue))
     thread.start()
     # הפעלת פונקציית המצלמה
-    #num = show_camera()# שחוזר מספר נגיעות מהYOLO
+    #numLie = show_camera()# שחוזר מספר נגיעות מהYOLO
 
     show_camera()
     # המתנה לסיום תהליך קליטת השמע
@@ -55,5 +50,6 @@ def fun_lie_check(choice1):
     emotion_label = predicted_emotion[0]
 
     print("השלב השלישי הוא הבחינה האמיתית")
-    choice3=3
-    fun_real_test(choice3,Blood_Pressure2, Pulse_Pressure2,emotion_label)
+    read_file_to_array(f'D:\\Users\\שרי\\Desktop\\FullProjectSARI\\percents.txt')
+    choice3 = 3
+    fun_real_test(choice3)

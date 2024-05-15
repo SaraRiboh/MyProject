@@ -4,7 +4,7 @@ from feelsModel import *
 
 
 
-counter = 0
+
 
 
     # פונקציה לקליטת שמע והצגתו

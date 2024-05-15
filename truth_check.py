@@ -3,9 +3,8 @@ from packeg import *
 from fun_camera import *
 from  lie_check import  *
 
-# צור אירועים לסינכרון Threads
-camera_ready = threading.Event()
-camera_opened = threading.Event()
+
+
 
 
 
@@ -13,6 +12,7 @@ camera_opened = threading.Event()
 
 
 sentence = "my name is Sarah"
+numTruth=0
 
 def fun_truth_check(choice):
 
@@ -28,7 +28,7 @@ def fun_truth_check(choice):
     engine.say(question)
     engine.runAndWait()
 
-    print("עכשיו תפתח מצלמה ועל הנבחן לענות תשובה")
+    print("עכשיו תפתח מצלמה ועל הנבחן לענות אמת על השאלה")
 
 
 
@@ -37,7 +37,7 @@ def fun_truth_check(choice):
     thread = threading.Thread(target = listen_and_print, args=(sentence, choice,audio_queue))
     thread.start()
     # הפעלת פונקציית המצלמה
-    #num = show_camera()# שחוזר מספר נגיעות מהYOLO
+    #numTruth = show_camera()# שחוזר מספר נגיעות מהYOLO
     show_camera()
 
 
@@ -63,10 +63,8 @@ def fun_truth_check(choice):
 
 
     choice1=2
-    fun_lie_check(choice1)
     print("השלב השני הוא בדיקת השקר")
-
-
+    fun_lie_check(choice1)
 
 
 
