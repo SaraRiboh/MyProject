@@ -60,7 +60,7 @@ def checkSentiment(choice):
     # פירוש התוצאה
     emotion_label2 = predicted_emotion[0]
     #אם הרגש הוא חיובי - יחזיר 1*4 אם שלילי יחזיר 4*0
-    res.append((emotion_label2 == observed_emotions[2] or emotion_label2 == observed_emotions[3]))
+    res.append((emotion_label2 == observed_emotions[1]))
 
 def Blood():
     blood_Pressure3 = random.randint(140, 179)
@@ -70,7 +70,7 @@ def Pulse():
     Pulse_Pressure2 = random.randint(170, 200)
     res.append((Pulse_Pressure2>Pulse_Pressure1_Low and Pulse_Pressure2<=Pulse_Pressure1_High))
 
-sentence = "My Name Is Sara"
+sentence = "My Name Is Sarah"
 def fun_real_test(choice):
 
 
@@ -79,6 +79,7 @@ def fun_real_test(choice):
      while(question!='A'):
         engine = pyttsx3.init()
         engine.say(question)
+        print("עכשיו תפתח מצלמה ועל הנבחן לענות אמת על השאלה")
         engine.runAndWait()
 
         checkSentiment(choice)
@@ -87,7 +88,7 @@ def fun_real_test(choice):
 
         result=0
         for i in range(len):
-            result+=percents[i]*res[i]
+            result+=int(percents[i])*int(res[i])
         str_p = str(result)
         print("הנבחן שיקר בוודאות של "+str_p+"%")
         question = input("בוחן יקר אנא הכנס שאלה לשאול את הנבחן,אם אינך חפץ לשאול הקש A")

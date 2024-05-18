@@ -39,7 +39,7 @@ emotions={
   '08':'surprised'
 }
 #DataFlair - Emotions to observe
-observed_emotions=['calm', 'happy', 'fearful', 'disgust']
+observed_emotions=['calm','fearful']
 #DataFlair - Load the data and extract features for each sound file
 
 def load_data(test_size=0.1):

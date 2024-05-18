@@ -60,6 +60,7 @@ def fun_truth_check(choice):
     predicted_emotion = model.predict(features)
     # פירוש התוצאה
     emotion_label1 = predicted_emotion[0]
+    print(emotion_label1)
 
 
     choice1=2
