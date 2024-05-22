@@ -35,6 +35,9 @@ import time
 import gradio as gr
 import whisper
 from transformers import pipeline
+from moviepy.editor import *
+import moviepy.editor as mp
+import speech_recognition as sr
 
 
 

@@ -2,6 +2,7 @@
 from explane import *
 from truth_check import *
 
+TF_ENABLE_ONEDNN_OPTS=0
 
 def main():
     while True:

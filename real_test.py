@@ -22,8 +22,7 @@ def read_file_to_array(filename):
 #הבחינה האמיתית
 
 #הפונקציה סופרת כמה נגיעות בפנים יש ומחשבת אם זה אמת או שקר
-def check_touches_in_face():
-    num=0
+def check_touches_in_face(sum):
 
     # הפעלת פונקציית המצלמה
     # num = show_camera()# שחוזר מספר נגיעות מהYOLO
@@ -31,10 +30,10 @@ def check_touches_in_face():
     # המתנה לסיום
 
 
-    res.append((num>0))
+    res.append((num>sum))
 
 #בדיקת רגש בקול
-def checkSentiment(choice):
+def checkSentiment(choice,emotion_label2):
     # יצירת תהליך נפרד עבור קליטת שמע
     audio_queue = queue.Queue()
     thread = threading.Thread(target=listen_and_print, args=(sentence, choice, audio_queue))
@@ -58,9 +57,9 @@ def checkSentiment(choice):
     # חיזוי רגש
     predicted_emotion = model.predict(features)
     # פירוש התוצאה
-    emotion_label2 = predicted_emotion[0]
+    emotion_label3 = predicted_emotion[0]
     #אם הרגש הוא חיובי - יחזיר 1*4 אם שלילי יחזיר 4*0
-    res.append((emotion_label2 == observed_emotions[1]))
+    res.append((emotion_label3 == emotion_label2))
 
 def Blood():
     blood_Pressure3 = random.randint(140, 179)
@@ -71,7 +70,7 @@ def Pulse():
     res.append((Pulse_Pressure2>Pulse_Pressure1_Low and Pulse_Pressure2<=Pulse_Pressure1_High))
 
 sentence = "My Name Is Sarah"
-def fun_real_test(choice):
+def fun_real_test(choice,emotion_label2,sum):
 
 
      question = input("בוחן יקר אנא הכנס שאלה לשאול את הנבחן,אם אינך חפץ לשאול הקש A")
@@ -82,7 +81,7 @@ def fun_real_test(choice):
         print("עכשיו תפתח מצלמה ועל הנבחן לענות אמת על השאלה")
         engine.runAndWait()
 
-        checkSentiment(choice)
+        checkSentiment(choice,emotion_label2)
         Blood()
         Pulse()
 
