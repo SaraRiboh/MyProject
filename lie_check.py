@@ -1,7 +1,7 @@
 
 from real_test import *
 from packeg import *
-from fun_camera import *
+from fun_camera1 import *
 
 
 
@@ -81,3 +81,13 @@ def fun_lie_check(choice1,sum):
     read_file_to_array(f'D:\\Users\\שרי\\Desktop\\FullProjectSARI\\percents.txt')
     choice3 = 3
     fun_real_test(choice3,emotion_label2,sum)
+
+def open(sentence, choice):
+    audio_queue = queue.Queue()
+    thread = threading.Thread(target=listen_and_print, args=(sentence, choice, audio_queue))
+    thread.start()
+    # הפעלת פונקציית המצלמה
+    # numTruth = show_camera()# שחוזר מספר נגיעות מהYOLO
+    show_camera()
+    # המתנה לסיום
+    thread.join()

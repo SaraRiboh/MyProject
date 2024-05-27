@@ -36,6 +36,8 @@ import gradio as gr
 import whisper
 from transformers import pipeline
 import speech_recognition as sr
+from ultralytics import YOLO
+import time
 
 
 

@@ -9,8 +9,8 @@ import os
 import cv2
 from ultralytics import YOLO
 import time
-from feelsModel import *
-from From_mp4_to import *
+
+from fun_camera1 import *
 
 
 
@@ -24,22 +24,36 @@ UPLOAD_FOLDER = 'uploads'
 if not os.path.exists(UPLOAD_FOLDER):
     os.makedirs(UPLOAD_FOLDER)
 
+choice = 0
+moneFalse = 1
+moneTrue =1
+@app.route('/send', methods=['POST'])
+def send():
+    global choice
+    global moneFalse
+    global moneTrue
+    data = request.get_json()
+    print(data)
+    if(data=='false'):
+        choice += 1
+    else:
+        if (choice==1):
+            moneTrue+=1
+        else:
+            moneFalse +=1
+    print(moneFalse)
+    message = open(sentence,choice,moneTrue,moneFalse)
+    print(message)
+    return jsonify(message), 200
 
-@app.route('/upload', methods=['POST'])
-def upload():
-    if 'video' in request.files and 'audio' in request.files:
-        video_file = request.files['video']
-        audio_file = request.files['audio']
 
-        video_path = os.path.join(UPLOAD_FOLDER, "video_received.mp4")
 
-        audio_path = os.path.join(UPLOAD_FOLDER, "audio_received.wav")
+if __name__ == '__main__':
+    app.run(debug=True)
 
-        video_file.save(video_path)
-        audio_file.save(audio_path)
 
-        # extract_audio_from_chrome_mp4("./uploads/video_received.mp4","output.wav")
-
+    """"
+    
         def detect_objects_in_video(video_path):
             cap = cv2.VideoCapture(video_path)
 
@@ -96,10 +110,7 @@ def upload():
         return jsonify(response_data)
 
     return jsonify({'error': 'Video and audio files are required'}), 400
-
-
-if __name__ == '__main__':
-    app.run(debug=True)
+    """
 
 
 
