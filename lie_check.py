@@ -55,18 +55,7 @@ def fun_lie_check(choice1,sum):
         # פירוש התוצאה
         emotion_label2 = predicted_emotion[0]
         print(emotion_label2)
-        if text == sentence:
-            Truth_touch_arr.append(numTruth)
-            if emotion_label2 == observed_emotions[1]:
-                Truth_feels_arr[1] = int(Truth_feels_arr[1]) + 1
-            else:
-                Truth_feels_arr[0] = int(Truth_feels_arr[0]) + 1
-        else:
-            lie_touch_arr.append(numTruth)
-            if emotion_label2 == observed_emotions[1]:
-                lie_feels_arr[1] = int(lie_feels_arr[1]) + 1
-            else:
-                lie_feels_arr[0] = int(lie_feels_arr[0]) + 1
+
 
     for i in range(mone):
         sum2 += lie_touch_arr[i]
@@ -82,12 +71,4 @@ def fun_lie_check(choice1,sum):
     choice3 = 3
     fun_real_test(choice3,emotion_label2,sum)
 
-def open(sentence, choice):
-    audio_queue = queue.Queue()
-    thread = threading.Thread(target=listen_and_print, args=(sentence, choice, audio_queue))
-    thread.start()
-    # הפעלת פונקציית המצלמה
-    # numTruth = show_camera()# שחוזר מספר נגיעות מהYOLO
-    show_camera()
-    # המתנה לסיום
-    thread.join()
+

@@ -4,6 +4,7 @@ from packeg import *
 
 
 def extract_feature(file_name, mfcc=True, chroma=True, mel=True):
+    global observed_emotions
     with soundfile.SoundFile(file_name) as sound_file:
         sample_rate = sound_file.samplerate
         X = sound_file.read(dtype="float32")
