@@ -7,7 +7,6 @@ import speech_recognition as sr
 import threading
 import sys
 import pyttsx3
-import random
 from datetime import time
 import pyautogui
 import librosa

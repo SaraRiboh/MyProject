@@ -1,7 +1,7 @@
-from random import random
 
+from random import random
 from feelsModel import observed_emotions
-from real_test import *
+import random
 
 
 Blood_Pressure1_Low=160
@@ -18,13 +18,14 @@ res=[]
 percents=[]
 moneT=0
 moneF=0
+len=4
 sum=0
 a=0
 b=0
 c=0
 
 def fun_a1():
-    global sum,moneT, moneF, a, c, b
+    global sum,moneT, a, c, b
 
 
     a = 1
@@ -36,6 +37,7 @@ def fun_a1():
 
 def fun_a0():
     a = 0
+    global moneF
     moneF += 1
     Blood_Pressure2 = random.randint(160, 179)
     Pulse_Pressure2 = random.randint(190, 200)
@@ -64,12 +66,13 @@ def fun_c():
     Pulse()
 
 
-def check_touches_in_face(sum):
-    res.append((num>sum))
+def check_touches_in_face(frame_count_with_objects):
+   s= true_data()
+   res.append((frame_count_with_objects>s))
 
 #בדיקת רגש בקול
-def checkSentiment(emotion_label1):
-    res.append((emotion_label == emotion_label))
+def checkSentiment(emotion_label,lie_emotion):
+    res.append((emotion_label == lie_emotion))
 
 def Blood():
     blood_Pressure3 = random.randint(140, 179)
@@ -92,3 +95,17 @@ def false_data():
         lie_emotion = observed_emotions[1]
     return lie_emotion
 
+
+
+def read_file_to_array(filename,arr:list):
+  with open(filename, 'r') as file:
+    for line in file:
+      arr.append(line.rstrip())
+
+
+
+def fun_result():
+    result = 0
+    for i in range(len):
+        result += int(percents[i]) * int(res[i])
+    return result
