@@ -34,7 +34,6 @@ def send():
     global moneFalse
     global moneTrue
     data = request.get_json()
-    print(data)
     if(data=='false'):
         choice += 1
     else:
@@ -43,7 +42,6 @@ def send():
         else:
             moneFalse +=1
     message = open(sentence,choice,moneTrue,moneFalse)
-    print(message)
     return jsonify(message), 200
 
 

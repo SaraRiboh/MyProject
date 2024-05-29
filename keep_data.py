@@ -16,62 +16,60 @@ lie_feels_arr=[0,0]
 Truth_touch_arr=[]
 res=[]
 percents=[]
-moneT=0
-moneF=0
+moneT=1
 len=4
 sum=0
 a=0
 b=0
 c=0
 
-def fun_a1():
-    global sum,moneT, a, c, b
-
+def fun_a1(a):
 
     a = 1
-    moneT += 1
     Blood_Pressure1 = random.randint(140, 159)
     Pulse_Pressure1 = random.randint(170, 189)
     Blood_Pressure1_arr.append(Blood_Pressure1)
     Pulse_Pressure1_arr.append(Pulse_Pressure1)
+    return a
 
-def fun_a0():
+def fun_a0(a):
     a = 0
-    global moneF
-    moneF += 1
     Blood_Pressure2 = random.randint(160, 179)
     Pulse_Pressure2 = random.randint(190, 200)
     Blood_Pressure2_arr.append(Blood_Pressure2)
     Pulse_Pressure2_arr.append(Pulse_Pressure2)
+    return a
 
-def fun_b1():
+def fun_b1(b):
     b = 1
-    moneF += 1
     Blood_Pressure2 = random.randint(160, 179)
     Pulse_Pressure2 = random.randint(190, 200)
     Blood_Pressure2_arr.append(Blood_Pressure2)
     Pulse_Pressure2_arr.append(Pulse_Pressure2)
+    return b
 
-def fun_b0():
+def fun_b0(b):
     b = 0
-    moneT += 1
     Blood_Pressure1 = random.randint(140, 159)
     Pulse_Pressure1 = random.randint(170, 189)
     Blood_Pressure1_arr.append(Blood_Pressure1)
     Pulse_Pressure1_arr.append(Pulse_Pressure1)
+    return b
 
-def fun_c():
+def fun_c(c):
     c = 1
     Blood()
     Pulse()
+    return c
 
 
 def check_touches_in_face(frame_count_with_objects):
    s= true_data()
-   res.append((frame_count_with_objects>s))
+   res.append(frame_count_with_objects > s)
 
 #בדיקת רגש בקול
 def checkSentiment(emotion_label,lie_emotion):
+    print(lie_emotion,emotion_label)
     res.append((emotion_label == lie_emotion))
 
 def Blood():
@@ -83,9 +81,11 @@ def Pulse():
     res.append((Pulse_Pressure2>Pulse_Pressure1_Low and Pulse_Pressure2<=Pulse_Pressure1_High))
 
 def true_data():
-    for i in range(moneT):
+    global sum,moneT
+    m=moneT
+    for i in range(moneT-1):
         sum += Truth_touch_arr[i]
-    sum /= moneT
+    sum /= m
     return sum
 
 def false_data():
@@ -104,8 +104,8 @@ def read_file_to_array(filename,arr:list):
 
 
 
-def fun_result():
-    result = 0
+def fun_result(choice):
+    choice=0
     for i in range(len):
-        result += int(percents[i]) * int(res[i])
-    return result
+        choice += int(percents[i]) * int(res[i])
+    return choice
